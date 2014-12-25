@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        var time = 10;
+        var id = 0;
+        window.onload = function () {
+            //時鐘會每次返回一個ID，它會自動循環調用
+            id = setInterval(daojishi, 1000);
+            //只調用一次,當window.onload后,再隔1000ms調用指定的方法,相當於調用方法的延遲
+            id = setTimeout(daojishi, 1000);
+        }
+        function daojishi() {
+            time--;
+            document.getElementById("time").innerHTML = time;
+            if (time == 0)
+            {
+                clearTimeout(id);
+            }
+        }
+    </script>
+</head>
+<body>
+    登陸成功,還有<span id="time" style=" color :#ff0000"></span>秒自動跳轉到主頁
+</body>
+</html>

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        ul {
+            list-style: none;
+            width: 570px;
+            padding-left: 30px;
+            background: #b2f2e8;
+            height: 25px;
+        }
+
+        li {
+            float: left;
+            height: 23px;
+            line-height: 25px;
+            text-align: center;
+            border: 1px solid #00ff90;
+            background-color: #98f1f3;
+            color: #152074;
+            padding: 0px 20px;
+            cursor: pointer;
+        }
+
+        .content {
+            width: 600px;
+            height: 300px;
+            clear: both;
+            padding: 5px;
+            text-indent: 2em;
+        }
+    </style>
+    <script type="text/javascript">
+        function gel(id) {
+            return document.getElementById(id);
+        }
+        var arr = [
+            { title: '新聞', content: '這是新聞' },
+            { title: '財經', content: '這是財經' },
+            { title: '娛樂', content: '這是娛樂' },
+            { title: '體育', content: '這是體育' },
+            { title: '汽車', content: '這是汽車' },
+            { title: '視頻', content: '這是視頻' },
+            { title: '生活', content: '這是生活' }
+        ]
+
+        window.onload = function () {
+            loadMav();
+        }
+
+        function loadMav() {
+            var ullist = gel('ulList');
+            for (var i = 0; i < arr.length; i++) {
+                var li = document.createElement('li');
+                li.innerHTML = arr[i].title;
+                ullist.appendChild(li);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="contanier">
+        <ul id="ulList"></ul>
+
+        <div id="content" class="content"></div>
+    </div>
+</body>
+</html>

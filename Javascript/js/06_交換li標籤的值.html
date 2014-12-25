@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function () {
+            //1.首先為每一個li標籤添加一個點擊事件
+            //2.當你點擊的時候要獲取當前被點擊元素的下一個節點
+            //3.將下一個節點插入到當前節點的前面
+            var lis = document.getElementById("ullist").childNodes;
+            for (var i = 0; i < lis.length; i++) {
+                if (lis[i].nodeType == 1)
+                {
+                    lis[i].onclick = function () {
+                        //nextSibling---得到下一個元素,這個元素的類型可以包含空文本節點
+                        //var ne=this.nextSibling;---可以得到所有的節點類型
+                        //說明：在網頁裡面,node表示所有可能的節點類型(包含元素1,屬性2,文本3,注釋8,文檔9),但是element只包含元素節點
+                        if (this.nextElementSibling) {
+                            var ne = this.nextElementSibling;//得到下一個元素節點
+                            document.getElementById("ullist").insertBefore(ne, this);
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="ullist">
+        <li>北京</li>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+    </ul>
+</body>
+</html>

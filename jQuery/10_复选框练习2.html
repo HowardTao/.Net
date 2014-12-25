@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $("input[type=checkbox]:gt(0)").click(function () {
+                if ($("input[type=checkbox]:gt(0):checked").length > 0) {
+                    document.getElementById("chkAll").checked = true;
+                }
+                else {
+                    document.getElementById("chkAll").checked = false;
+                }
+            });
+
+            $("#chkAll").click(function () {
+                var chkAllStatus = this.checked;
+                $("input[type=checkbox]:gt(0)").each(function () {
+                    this.checked = chkAllStatus;
+                })
+            });
+        })
+    </script>
+</head>
+<body>
+    <fieldset >
+        <legend ><input type="checkbox" id="chkAll" />个人爱好</legend>
+        <input type="checkbox" value="足球" />足球
+        <input type="checkbox" value="篮球" />篮球
+        <input type="checkbox" value="游泳" />游泳
+        <input type="checkbox" value="跳舞" />跳舞
+    </fieldset>
+
+
+</body>
+</html>

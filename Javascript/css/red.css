@@ -1,0 +1,15 @@
+﻿* {
+    margin:0px;padding:0px;
+}
+body {
+    background-color:#c4bfbf;
+}
+span{
+    color:red;
+}
+.txt {
+    color:#ff6a00;border:1px solid #7d1515;
+}
+.btn{
+    background-color:#b14747;color:#b6ff00;width:80px;height:20px;border:none;
+}

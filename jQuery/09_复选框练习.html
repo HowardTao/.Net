@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#chkAll").click(function () {
+                //:eq(索引序号)、:gt(索引序号)、:lt(索引序号)选取索引等于、大于、小于索引序号的元素
+                //根据全选复选框的选择选择状态(true/false)来设置其他几个复选框的选中状态(checked)
+                //因为使用了attr方法,设置为true时,会自动添加一个checked="checked"
+                //                              设置为false时,会自动移除checked="checked" 
+                //*************如果使用jq操作,会有bug,多次点击失效************************
+                //$("input[type=checkbox]:gt(0)").attr("checked", this.checked);
+
+                //使用dom语法来设置复选框的选择状态
+                //1.先保存全选复选框的状态
+                var chkAllStatus = this.checked;
+                //2.遍历其他复选框,病通过dom语法设置他们的选中状态
+                $("input[type=checkbox]:gt(0)").each(function () {
+                    this.checked = chkAllStatus;
+                })
+            });
+
+            //获取radiobutton选中的值
+            $("#btn01").click(function () {
+                var v = $("input[name=gender]:checked").val();
+                alert(v);
+            });
+            //设置RadioButton的选中值
+            $("#btn02").click(function () {
+                //注意:val中参数的[]不能省略
+                $("input[name=gender]").val(["女"]);
+            });
+
+        })
+    </script>
+</head>
+<body>
+    请选择:
+    <input type="checkbox" id="chkAll" />全选/全部选<br />
+    <input type="checkbox" value="足球" />足球
+    <input type="checkbox" value="篮球" />篮球
+    <input type="checkbox" value="游泳" />游泳
+    <input type="checkbox" value="跳舞" />跳舞
+    <br />
+
+    <input type="radio" name="gender" value="男" />男
+    <input type="radio" name="gender" value="女" />女
+    <br />
+    <input type="button" id="btn01" value="取得选中的值" />
+    <input type="button" id="btn02" value="设置选中的值" />
+</body>
+</html>

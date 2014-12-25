@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css" >
+        select{
+            font-size :16px;
+            width:80px;
+            height :150px;
+        }
+        div {
+            display:inline-block;
+            margin:10px 10px;
+
+        }
+        input[type="button"]{
+            width:60px;
+        }
+    </style>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" >
+        $(function () {
+            $("#btnToRight").click(function () {
+                //1.將選中的左側opt移到右側
+                $("#selL option:selected").appendTo("#selR");
+                //2.右側根據value進行排序
+                $("#selR option").sort(function (x, y) {
+                    return parseInt(x.value) - parseInt(y.value);
+                }).appendTo($("#selR"));
+            });
+
+            $("#btnToRightAll").click(function () {
+                $("#selL option").appendTo("#selR");
+                $("#selR option").sort(function (x, y) {
+                    return parseInt(x.value) - parseInt(y.value);
+                }).appendTo($("#selR"));
+            });
+
+            $("#btnToLeft").click(function () {
+                $("#selR option:selected").appendTo("#selL");
+                $("#selL option").sort(function (x, y) {
+                    return parseInt(x.value) - parseInt(y.value);
+                }).appendTo($("#selL"));
+            });
+
+            $("#btnToLeftAll").click(function () {
+                $("#selR option").appendTo("#selL");
+                $("#selL option").sort(function (x, y) {
+                    return parseInt(x.value) - parseInt(y.value);
+                }).appendTo($("#selL"));
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <select id="selL" multiple="multiple">
+        <option value="1">中國</option>
+        <option value="2">美國</option>
+        <option value="3">日本</option>
+        <option value="4 ">英國</option>
+    </select>
+    <div>
+        <input type="button" id="btnToRight" value="->" />
+        <br />
+        <input type="button" id="btnToRightAll" value="=>" />
+        <br />
+        <input type="button" id="btnToLeft" value="<-" />
+        <br />
+        <input type="button" id="btnToLeftAll" value="<=" />
+        <br />
+        <br />
+
+    </div>
+    <select id="selR" multiple="multiple">
+    </select>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/image.css" rel="stylesheet" />
+    <script type="text/javascript">
+        window.onload = function () {
+            var lis = document.getElementById("ulList").childNodes;
+            var img1 = document.getElementById("img");
+            document.body.style.backgroundColor
+            var arr = [
+                { url: '../images/1.jpg' },
+                { url: '../images/2.jpg' },
+                { url: '../images/3.jpg' },
+                { url: '../images/4.jpg' },
+                { url: '../images/5.jpg' }
+            ]
+            for (var i = 0; i < lis.length; i++) {
+                if (lis[i].nodeType == 1) {
+                    lis[i].onclick = function () {
+                        img1.src = arr[parseInt(this.innerHTML) - 1].url;
+                        for (var j = 0; j < lis.length; j++) {
+                            if (lis[j].nodeType == 1) {
+                                lis[j].style.backgroundColor = '#2b2b2b';
+                            }
+                        }
+                        this.style.backgroundColor = "red";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div style="width:640px;height:480px;">
+        <img id="img" src="../images/1.jpg" />
+        <ul id="ulList">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+</body>
+</html>

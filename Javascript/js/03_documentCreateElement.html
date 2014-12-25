@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script >
+        window.onload = function () {
+            function gel(id) {
+                return document.getElementById(id);
+            }
+            document.getElementById("btnAdd").onclick = function () {
+                //如果你需要點擊每個li刪除對應的li標籤,那麼必須為每個li標籤添加事件
+                var ullist = gel("uList");
+                var lis = ullist.childNodes;
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].onclick = function () {
+                        //this:你當前點擊的是哪一個,this就是這個對象
+                        this.parentNode.removeChild(this);
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="新增" id="btnAdd" aa="ddd"/>
+    <input type="button" value="新增1" id="btnAdd1"/>
+    <ul id="uList">
+        <li>北京</li>
+        <li>上海</li>
+        <li>廣州</li>
+    </ul>
+</body>
+</html>

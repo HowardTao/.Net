@@ -1,0 +1,38 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    width: 640px;
+    margin: 0px auto;
+    padding-top: 50px;
+}
+
+div {
+    position: relative;
+    height: 480px;
+    border: 1px solid;
+}
+
+ul {
+    list-style: none;
+    width: 150px;
+    height: 20px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+li {
+    float: left;
+    width: 25px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #2b2b2b;
+    margin-right: 4px;
+    cursor:pointer;
+}

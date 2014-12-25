@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //類選擇器
+            console.log($('.myDiv'));
+            //指定元素的類選擇器
+            console.log($('div.myDiv'));
+            //id選擇器
+            console.log($('#dd'));
+            //獲取class為myDiv的元素div下元素為input并id為myDiv_input
+            console.log($("div.myDiv input#myDiv_input"))
+
+            //通過'>'直接查找子元素
+            console.log($('ul>li'));
+            console.log($('ul li'));
+
+            //E+F 匹配E后第一個兄弟節點
+            console.log($('ul+ul'));
+        });
+    </script>
+</head>
+<body>
+    <input class="myDiv" value="11111" />
+    <input class="myDiv" value="2222" />
+    <input class="myDiv" value="33333" />
+    <div class="myDiv" id="dd">
+        <input id="myDiv_input" value="44444" />
+    </div>
+    <div>
+        1234555
+        <div class="myDiv">
+            <input />
+        </div>
+    </div>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <ul>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+    </ul>
+</body>
+</html>

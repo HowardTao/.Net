@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style >
+        *{
+            font-family:微软雅黑;
+        }
+        #ulL{
+            float:left;
+        }
+        #ulR{
+            float:right;
+        }
+    </style>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var r = '1222';
+            console.info(r);
+            $("#ulL li").click(function () {
+                var $curLi = $(this);
+                //1.判断当前li是否在左侧ul中,如果在,则移动到右侧
+                if ($curLi.parent().attr("id") == "ulL") {
+                    //2.被点击的li对象设置为绝对布局,动画飞到右侧
+                    //***获取浏览器的可见宽度:document.body.clientWidth***
+                    $curLi.css("position", "absolute").animate({ left: document.body.clientWidth - 20 }, 1000, function () {
+                        //2.1动画的回调函数,将li对象移到右侧ul中,并设置为静态布局(默认值)
+                        $curLi.appendTo($("#ulR")).css("position", "static");
+                    });
+                }
+                //否则移动到左侧
+                else {
+                    //1.被点击的li对象设置为绝对布局,动画飞到右侧
+                    $curLi.css("position", "absolute").animate({ left: "10px" }, 1000, function () {
+                        //2.动画的回调函数,将li对象移动到左侧,并设置为静态布局(默认值)
+                        $curLi.appendTo($("#ulL")).css("position", "static");
+                    });
+                }
+            });
+
+        })
+    </script>
+</head>
+<body>
+    <ul id="ulL">
+        <li index="1">中国</li>
+        <li index="2">美国</li>
+        <li index="3">德国</li>
+        <li index="4">俄罗斯</li>
+        <li index="5">越南</li>
+    </ul>
+
+    <ul id="ulR"></ul>
+</body>
+</html>

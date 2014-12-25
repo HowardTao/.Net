@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css" >
+        div {
+            margin: 10px 10px;
+            padding :50px;
+            width:50%;
+            border :1px solid #000;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            //1.事件参数对象里的常用属性
+            //target:事件源(事件的触发元素)
+            //currentTarget:就是this
+            //type:事件名
+            document.getElementById("divF").onclick = function (e) {
+
+                //2.在老式IE中,不会将事件参数对象作为参数传递进来,而是使用window.event
+                alert(e.currentTarget == this);
+                alert("我是divF,我被点了!" + e + ",target=" + e.target.id + ",currentTarget=" + e.currentTarget.id);
+            }
+
+            document.getElementById("divS").onclick = function (e) {
+                alert("我是divS,我被点了!" + e + ",target=" + e.target.id + ",currentTarget=" + e.currentTarget.id);
+                //阻断事件冒泡
+                //e.stopPropagation();
+            }
+
+            document.getElementById("goto").onclick = function (e) {
+                //阻断元素的默认行为
+                e.preventDefault();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="divF">
+        <div id="divS"></div>
+    </div>
+    <a href=" http://www.baidu.com" id="goto" >baidu</a>
+</body>
+</html>

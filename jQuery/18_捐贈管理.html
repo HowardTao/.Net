@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>捐赠管理</title>
+    <style type="text/css">
+        * {
+            font-family: 微软雅黑;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            border: 1px solid #0094ff;
+            width: 940px;
+            margin: 2px auto;
+            padding: 5px;
+        }
+
+        #tbData {
+            width: 950px;
+            border: 1px solid #0094ff;
+            margin: 2px auto;
+            border-collapse: collapse;
+        }
+
+            #tbData th {
+                background-color: #0094ff;
+                color: #fff;
+            }
+
+            #tbData th, td {
+                border: 1px solid #000;
+                padding: 5px;
+                text-align: center;
+            }
+    </style>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/myTable.js"></script>
+    <script src="js/data.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //0.创建机构下拉框myTable.selOrgs
+            makeOrgSel();
+            //1.初始化表格对象并显示到父容器中
+            var colDef = [
+                                            { title: "序号", property: "id" },
+                                            {
+                                                title: "捐款人", property: "pname",
+                                                editModle: "<input type='text'>"
+                                            },
+                                            {
+                                                title: "受捐单位", property: "orgId",
+                                                editModle: myTable.selOrgs,
+                                                formatter: function (dataRow) {
+                                                    //根据捐款单位id找到对应的捐款单位,返回单位名称
+                                                    return listOrgs.findOrgById(dataRow.orgId).name;
+                                                }
+                                            },
+                                            { title: "金额", property: "money", editModle: "<input type='text'/>" },
+                                            { title: "受捐时间", property: "date", editModle: "<input type='text'/>" },
+                                            {
+                                                title: "操作", property: "btn", editModle: "确定 取消",
+                                                formatter: function (dataRow) {
+                                                    return "<a href='javascript:void(0)' onclick='myTable.doDel(" + dataRow.id + ")'>删除</a>"
+                                                    + "<a href='javascript:void(0)' onclick='myTable.inEdit(this)'>修改</a>";
+                                                }
+                                            }
+            ];
+            myTable.init("bo", colDef);
+            //2.初始化数据并添加到表格中
+            initMoneyData();
+            //3.添加到表格中显示
+            myTable.showData(listMoney);
+
+        });
+
+        //0.1生成机构下拉框
+        function makeOrgSel() {
+            //为插件动态添加一个属性 -- 捐款单位下拉框
+            myTable.selOrgs = $("<select></select>");
+            $.each(listOrgs, function (index, ele) {
+                myTable.selOrgs.append($("<option value='" + ele.id + "'>" + ele.name + "</option>"));
+            });
+        };
+
+        //0.2初始化捐款数组数据
+        function initMoneyData() {
+            listMoney.add("李连杰", "1", "10000", "2013-01-17");
+            listMoney.add("成龙", "2", "20000", "2013-01-18");
+            listMoney.addObj({ "pname": "甄子丹", "orgId": "3", "money": "40000", "date": "2013-01-19" });
+            listMoney.addObj({ "pname": "洪金宝", "orgId": "3", "money": "140000", "date": "2013-01-19" });
+            listMoney.add("徐静蕾", "2", "2220000", "2013-01-17");
+            listMoney.add("陈光标", "2", "1000", "2013-01-18");
+            listMoney.add("星爷", "1", "10000", "2013-01-17");
+            listMoney.add("梁朝伟", "2", "20000", "2013-01-18");
+            listMoney.add("周润发", "1", "10000", "2013-01-17");
+            listMoney.add("马云", "3", "2000000", "2013-01-18");
+            listMoney.add("马云他儿子", "3", "2000000", "2013-01-18");//11 行
+        }
+
+        //0.3刪除
+
+
+
+    </script>
+</head>
+<body id="bo">
+    <h1>捐赠管理</h1>
+    <div>
+        受捐单位:
+        <select id="selSearchOrg">
+            <option value="-1">请选择</option>
+        </select>
+        <input type="button" id="btnSearch" value="查询" />
+        <input type="button" id="btnPre" value="上一页" />
+        <input type="button" id="btnNext" value="下一页" />
+        <span id="spanPageIndex"></span>/<span id="spanPageCount"></span>
+    </div>
+    <div>
+        捐赠人:<input type="text" id="txtName" />
+        受捐单位:<select id="selAddOrg"></select>
+        金额:<input type="text" id="txtMoney" />
+        受捐日期:<input type="text" id="txtDate" />
+        <input type="button" id="btnAdd" value="新增" />
+    </div>
+</body>
+</html>

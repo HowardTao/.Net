@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script>
+        var time = 10;
+        var i = 0;
+        window.onload = function () {
+            document.getElementById("btn").value = time + ' 確認';
+            document.getElementById("btn").disabled = 'true';
+            i = setInterval(daojishi, 1000);
+            setInterval(Date_Edit, 1000);
+        }
+        function daojishi() {
+            time--;
+            document.getElementById("btn").value = time + ' 確認';
+            document.getElementById("btn").disabled = 'disabled';
+            if (time == 0) {
+                clearInterval(i);
+                document.getElementById("btn").value = '確認';
+                document.getElementById("btn").disabled = '';
+            }
+        }
+
+        function Date_Edit() {
+            var date = new Date();
+            var yy = date.getFullYear();
+            var MM = date.getMonth() + 1;
+            var dd = date.getDate();
+            var hh = date.getHours();
+            var mm = date.getMinutes();
+            var ss = date.getSeconds();
+            document.getElementById("btnClock").value = yy + '/' + (MM > 10 ? MM : '0' + MM) + '/' + (dd > 10 ? dd : '0' + dd) + ' ' + hh + ':' + (mm > 10 ? mm : '0' + mm) + ':' + (ss > 10 ? ss : '0' + ss);
+
+        }
+    </script>
+</head>
+<body>
+    <input type="button" id="btn" />
+    <input id="btnClock" />
+</body>
+</html>

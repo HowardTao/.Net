@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/money.css" rel="stylesheet" />
+    <script type="text/javascript">
+
+        //受捐单位数组
+        var listOrgs = [
+           { "id": "1", "comName": "壹基金" },
+           { "id": "2", "comName": "宋庆龄基金" },
+           { "id": "3", "comName": "慈济基金" },
+           { "id": "4", "comName": "红十字会" }
+        ];
+        listOrgs.getOrgNameById = function (id) {
+            for (var i = 0; i < listOrgs.length; i++) {
+                if (listOrgs[i].id == id) {
+                    return listOrgs[i];
+                }
+            }
+        }
+        //捐款数据数组
+        var listData = [
+            { "id": "1", "perName": "成龙", "orgId": "1", "money": "10000", "date": "2012-3-3" },
+            { "id": "2", "perName": "李连杰", "orgId": "2", "money": "10000", "date": "2012-3-3" },
+            { "id": "3", "perName": "陈光标", "orgId": "3", "money": "10000", "date": "2012-3-3" },
+            { "id": "4", "perName": "胡锦涛", "orgId": "1", "money": "10000", "date": "2012-3-3" },
+            { "id": "5", "perName": "周星池", "orgId": "2", "money": "10000", "date": "2012-3-3" },
+            { "id": "6", "perName": "黎明", "orgId": "3", "money": "10000", "date": "2012-3-3" }
+        ];
+        function gel(id) {
+            return document.getElementById(id);
+        }
+        window.onload = function () {
+            //加載查詢功能的受捐單位數據
+            loadSel(gel('selSearchOrg'));
+            //加載新增功能塊的受捐單位數據
+            loadSel(gel('selAddOrg'));
+            //加載詳細信息
+            loadTable();
+        }
+
+        //1.綁定受捐單位數據到下拉列表
+        function loadSel(obj)
+        {
+            for (var i = 0; i < listOrgs.length; i++) {
+                //方法一:
+                //var opt = document.createElement('option');
+                //opt.value = listOrgs[i].id;
+                //opt.innerHTML = listOrgs[i].comName;
+                //obj.appendChild(opt);
+                //方法二:
+                var opt = new Option(listOrgs[i].comName, listOrgs[i].id);
+                obj.options.add(opt);
+            }
+        }
+        //2.為表格綁定加載詳細數據
+        function loadTable() {
+            var tb = gel('tbList');
+            for (var i = 0; i < listData.length; i++) {
+                var trnew = tb.insertRow(-1);
+                trnew.insertCell(-1).innerHTML = listData[i].id;
+                trnew.insertCell(-1).innerHTML = listData[i].perName;
+                trnew.insertCell(-1).innerHTML = listOrgs.getOrgNameById(listData[i].orgId).comName;
+                trnew.insertCell(-1).innerHTML = listData[i].money;
+                trnew.insertCell(-1).innerHTML = listData[i].date;
+                trnew.insertCell(-1).innerHTML = '<a href="#">刪除</a>&nbsp;<a href="#">修改</a>'
+            }
+        }
+
+        function addTr(obj) {
+            var tb = gel('tbList');
+            var trnew = tb.insertRow(-1);
+            trnew.insertCell(-1).innerHTML = obj.id;
+            trnew.insertCell(-1).innerHTML = obj.perName;
+            var tdnew = document.createElement('td');
+            tdnew.setAttribute('orgId', obj.orgId);
+            tdnew.innerHTML = listOrgs.getOrgNameById(obj.orgId).comName;
+            trnew.appendChild(tdnew);
+            trnew.insertCell(-1).innerHTML = obj.money;
+            trnew.insertCell(-1).innerHTML = obj.money;
+            trnew.insertCell(-1).innerHTML = obj.money;
+            trnew.insertCell(-1).innerHTML = obj.money;
+            trnew.insertCell(-1).innerHTML = obj.date;
+            trnew.insertCell(-1).innerHTML = "<a href='#' id='del' onclick='delObj(this)' >刪除</a>&nbsp;<a href='#' id='update' onclick='updateObj(this)'>修改</a>";
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="container">
+        <h1>捐贈管理</h1>
+        <div class="header">
+            受捐單位:
+            <select id="selSearchOrg">
+                <option value="-1">--請選擇--</option>
+            </select>
+            <input type="button" id="btnSearch" value="查詢" class="btn" />
+            <input type="button" id="btnprePage" value="上一頁" class="btn" />
+            <input type="button" id="btnnextPage" value="下一頁" class="btn" />
+            <span id="pageBar"></span>
+        </div>
+        <div class="search">
+            捐贈人:<input type="text" id="txtName" class="inputShort"/>
+            受捐單位:<select id="selAddOrg"></select>
+            金額:<input type="text" id="txtMoney" class="inputShort" />
+            受捐日期:<input type="text" id="txtDate" class="inputShort" />
+            <input type="button" id="btnAdd" value="新增" class="btn" />
+        </div>
+        <table id="tbList" class="tbList" cellpadding="0" cellspacing="0">
+            <tr>
+                <th>序號</th>
+                <th>捐贈人</th>
+                <th>受捐單位</th>
+                <th>金額</th>
+                <th>受捐日期</th>
+                <th>操作</th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

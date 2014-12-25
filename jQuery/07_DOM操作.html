@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn").click(function () {
+                var a = $("<a href='http://baidu.com' >百度</a>");
+                //1.追加元素
+                //append 父元素將子元素追加進來
+                //$("#form1").append($("<a href='http://baidu.com' >百度~~</a>"));
+                //$("<a href='http://baidu.com' >百度</a>").appendTo($("#form1"));
+
+                //2.插入元素
+                //2.1將元素插入到目標元素的後面
+               // a.insertAfter($("#selNation"));
+                //2.2將元素插入到目標元素的前面
+                //a.insertBefore($("input[type=text]"));
+
+                $("input[type=text]").remove();
+            });
+
+        })
+    </script>
+</head>
+<body>
+    <form id="form1" method="post">
+        用戶：
+        <input type="text" name=" txtName" /><br />
+        國籍：
+        <select id="selNation">
+            <option value="1">中國</option>
+            <option value="2">美國</option>
+            <option value="2">韓國</option>
+        </select><br />
+        <input id="btn" type="button" value="提交" />
+
+    </form>
+</body>
+</html>

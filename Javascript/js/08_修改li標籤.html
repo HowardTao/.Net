@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        //創建一個文本框
+        var inp = document.createElement("input");
+        inp.type = "text";
+        //當文本框失去焦點的時候要將文本框的值重新賦值給li的文本節點
+        inp.onblur = function () {
+            var str = inp.value;
+            inp.parentNode.innerHTML = str;
+        }
+        /*
+        1.每一個li都有修改功能,沒有必要為每一個li創建一個單獨的文本框,所以可以創建為全局的
+        2.當雙擊某個li標籤的時候,將全局的文本框添加進來
+        3.將li標籤之前的文本值賦值給文本框
+        4.將之前的文本節點移除
+        */
+        window.onload = function () {
+            //獲取所有的li標籤
+            var lis = document.getElementById('ulList').childNodes;
+            for (var i = 0; i < lis.length; i++) {
+                //判斷當前的節點類型是否是1---元素
+                if (lis[i].nodeType == 1) {
+                    lis[i].ondblclick = function () {
+                        //文本框的默認值是value,而不是innerH
+                        inp.value = this.innerHTML;
+                        //將已將賦值的文本框追加到li標籤的最後,這個時候li標籤同時有文本節點和文本框input節點
+                        this.appendChild(inp);
+                        //將之前的文本節點移除
+                        //this.removeChild(this.firstChild);
+                        this.removeChild(this.childNodes[0]);
+                        //讓文本框獲取焦點
+                        inp.focus();
+                        //inp.select();//讓文本框的內容選擇
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="ulList">
+        <li>北京</li>
+        <li>南京</li>  
+        <li>上海</li>
+        <li>廣州</li>
+    </ul>
+</body>
+</html>

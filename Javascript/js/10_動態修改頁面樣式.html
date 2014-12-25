@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="../css/red.css" rel="stylesheet" id="links" />
+    <style type="text/css" >
+        ul{
+            list-style:none;
+        }
+        li{
+            float:left;width:20px;height:20px;margin-right:10px;
+        }
+        .red{
+            background-color:red;
+        }
+         .green{
+            background-color:green;
+        }
+          .blue{
+            background-color:blue;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var lis = document.getElementById("ulList").childNodes;
+            for (var i = 0; i < lis.length; i++) {
+                if (lis[i].nodeType == 1) {
+                    lis[i].onclick = function () {
+                        document.getElementById("links").href = "../css/" + this.className + ".css";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="ulList">
+        <li class="red"></li>
+        <li class="green"></li>
+        <li class="blue"></li>
+    </ul>
+    <span>動態修改頁面樣式</span>
+    <br />
+    <input type="text" value="請輸入姓名" class="txt"/>
+    <input type="button" value="提交" class="btn" />
+</body>
+</html>

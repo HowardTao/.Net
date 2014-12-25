@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        * {
+            margin:0px;padding:0px
+        }
+        body {
+            padding-top:50px;
+        }
+        table {
+            width:400px;margin:0px auto;
+        }
+    </style>
+    <script type="text/javascript">
+        //js是為了以後學習jQuery和adp服務的,所以數據如果可以動態生成就動態方式
+        var arr = [
+            { "title": "一個c#問題", "name": "張三", "date": "2013-3-3" },
+            { "title": "一個jsf問題", "name": "張三", "date": "2013-3-3" },
+            { "title": "一個jquery問題", "name": "張三", "date": "2013-3-3" },
+            { "title": "一個asp問題", "name": "張三", "date": "2013-3-3" }
+        ];
+        window.onload = function () {
+            var tb = document.getElementById('tbList');
+            for (var i = 0; i < arr.length; i++) {
+                //-1在行的最後來追加
+                var trNew = tb.insertRow(tb.rows.length-1);
+                trNew.insertCell(-1).innerHTML = '<input type="checkbox"/>';
+                trNew.insertCell(-1).innerHTML = arr[i].title;
+                trNew.insertCell(-1).innerHTML = arr[i].name;
+                trNew.insertCell(-1).innerHTML = arr[i].date;
+            }
+            document.getElementById("chkAll").onclick = function () {
+                var chks = document.getElementsByTagName("input");
+                for (var i = 0; i < chks.length - 1; i++) {
+                    chks[i].checked = document.getElementById("chkAll").checked;
+                }
+               }
+
+            document.getElementById("del").onclick = function () {
+                var chks = document.getElementsByTagName("input");
+                for (var i = 0; i < chks.length-1; i++) {
+                    if(chks[i].checked)
+                    {
+                        //因為要將一行刪除,所以我們可以獲取這一行
+                        var trRow = chks[i].parentNode.parentNode;
+                        //將這一行從當前表格中刪除
+                        trRow.parentNode.removeChild(trRow);
+                    }
+                }
+            }
+            
+        }
+
+        ////方法一
+        //function loadData() {
+        //    var tb = document.getElementById('tbList');
+        //    for (var i = 0; i < arr.length; i++) {
+        //        var trNew = document.createElement('tr');
+        //        var td1 = document.createElement('td');
+        //        td1.align = 'center';
+        //        td1.innerHTML = '<input type="checkbox"/>';
+        //        var td2 = document.createElement('td');
+        //        td2.innerHTML = arr[i].title;
+        //        var td3 = document.createElement('td');
+        //        td3.innerHTML = arr[i].name;
+        //        var td4 = document.createElement('td');
+        //        td4.innerHTML = arr[i].date;
+        //        trNew.appendChild(td1);
+        //        trNew.appendChild(td2);
+        //        trNew.appendChild(td3);
+        //        trNew.appendChild(td4);
+        //        tb.appendChild(trNew);
+        //    }
+        //}
+
+        function loadData() {
+            var tb = document.getElementById('tbList');
+            for (var i = 0; i < arr.length; i++) {
+                //-1在行的最後來追加
+                var trNew = tb.insertRow(tb.rows.length-1);
+                trNew.insertCell(-1).innerHTML = '<input type="checkbox"/>';
+                trNew.insertCell(-1).innerHTML = arr[i].title;
+                trNew.insertCell(-1).innerHTML = arr[i].name;
+                trNew.insertCell(-1).innerHTML = arr[i].date;
+            }
+        }
+    </script>
+</head>
+<body>
+    <table id="tbList" border="1">
+        <tr>
+            <td>序號</td>
+            <td>標題</td>
+            <td>發件人</td>
+            <td>發件時間</td>
+        </tr>
+        <tr>
+        <td colspan="4">
+            <input type="checkbox" id="chkAll"/>全選
+            <a href="#" id="del">刪除</a>
+        </td>
+        </tr>
+    </table>
+</body>
+</html>

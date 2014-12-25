@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function () {
+            var sel = document.getElementById("sel");
+            for (var i = 1998; i < 2019; i++) {
+                //方法一:
+                //var opt = document.createElement("option");
+                //opt.innerHTML = i;
+                //opt.value = i;
+                //sel.appendChild(opt);
+
+                //方法二:
+                var opt = new Option(i, i);
+                sel.options.add(opt);
+            }
+        }
+    </script>
+</head>
+<body>
+    <select id="sel"></select>
+</body>
+</html>

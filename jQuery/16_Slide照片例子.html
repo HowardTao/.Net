@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        div img{
+            width:200px;
+        }
+    </style>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("img").mouseenter(function () {
+                $(this).animate({ width: "500px" });
+            }).mouseout(function () {
+                $(this).animate({ width: "200px" });
+            })
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <img src="../images/387876.jpg" />
+        <img src="../images/357251.jpg" />
+        <img src="../images/516146.jpg" />
+        <img src="../images/579654.jpg" />
+        <img src="../images/747727.jpg" />
+    </div>
+</body>
+</html>

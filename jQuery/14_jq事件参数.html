@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        div {
+            margin: 10px 10px;
+            padding: 50px;
+            width: 50%;
+            border: 1px solid #000;
+        }
+    </style>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //事件参数由jquery传入
+            $("div").click(function (e) {
+                alert(this.id + "事件参数=" + e);
+                //阻断事件冒泡
+                e.stopPropagation();
+            });
+
+            $("#goto").click(function (e) {
+                //阻断元素的默认行为
+                e.preventDefault();
+            })
+
+        })
+
+    </script>
+</head>
+<body>
+    <div id="divF">
+        <div id="divS"></div>
+    </div>
+    <a href=" http://www.baidu.com" id="goto">baidu</a>
+</body>
+</html>

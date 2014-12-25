@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        ul li {
+            border:0px solid #0094ff;
+            display:inline;
+            padding :2px 12px;
+            margin:4px;
+        }
+        .on{
+            background-image:url(../images/star-on-big.png);
+        }
+        .empty {
+            background-image:url(../images/empty.png);
+        }
+        .green {
+            background-image:url(../images/green.png);
+        }
+        .yellow {
+            background-image:url(../images/yellow.png);
+        }
+    </style>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function () {
+            var isClick = false;
+            $("li").css("background-image", "url(../images/star-off-big.png)").mouseover(function () {
+                $(this).css("background-image", "url(../images/star-on-big.png)").prevAll().css("background-image", "url(../images/star-on-big.png)").end().nextAll().css("background-image", "url(../images/star-off-big.png)");
+            }).mouseout(function () {
+                if (!isClick) {
+                    $(this).css("background-image", "url(../images/star-off-big.png)").siblings().css("background-image", "url(../images/star-off-big.png)")
+                }
+            }).click(function () {
+                $(this).css("background-image", "url(../images/star-on-big.png)").prevAll().css("background-image", "url(../images/star-on-big.png)");
+                isClick = true;
+            });
+        })
+    </script>
+</head>
+<body>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="C06_面向对象案例2_购物系统.Customer">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C06_面向对象案例2_购物系统.Shop">
+    <Position X="3.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAgAAEAAAAAEAA=</HashCode>
+      <FileName>Shop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C06_面向对象案例2_购物系统.WareHouse">
+    <Position X="5.25" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAAIAAAQAA=</HashCode>
+      <FileName>WareHouse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="C06_面向对象案例2_购物系统.State">
+    <Position X="8.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAIAAAAAAAAAAABAAAAAAAAAACAAAA=</HashCode>
+      <FileName>State.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="微軟正黑體" Size="9" />
+</ClassDiagram>

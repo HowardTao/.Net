@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        p {
+            display:inline;
+            border:1px solid #0094ff;
+            padding :2px 10px;
+            margin:5px;
+            background-color:#fff;
+        }
+    </style>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function () {
+            $("p").click(function () {
+                $(this).css("background-color", "red").prevAll().css("background-color", "red").end().nextAll().css("background-color", "#fff");
+            });
+        });
+    </script>
+</head>
+<body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</body>
+</html>
